@@ -65,11 +65,9 @@ Integrate animations and visual effects for better user experience.
 
 👨‍💻 Author
 
-Noah Ewalan Logong (Ramzey Ewalan)
+Noah Ewalan Logong 
 📧 ramzeydigitalservices@gmail.com
 
-🎵 YouTube
- | 🌐 Portfolio
 
 🪪 License
 
