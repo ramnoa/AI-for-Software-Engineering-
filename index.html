@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <h1>LearnHub</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#" id="home-link" style="display: none;">Home</a>
+                <a href="#" id="progress-link" style="display: none;">My Progress</a>
+                <a href="#" id="admin-link" style="display: none;">Admin</a>
+                <a href="#" id="logout-link" style="display: none;">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Login/Signup Page -->
+        <section id="auth-page" class="page active">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h2 id="auth-title">Welcome to LearnHub</h2>
+                        <p id="auth-subtitle">Sign in to continue your learning journey</p>
+                    </div>
+                    
+                    <form id="auth-form" class="auth-form">
+                        <div class="form-group" id="name-group" style="display: none;">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        
+                        <div class="form-group" id="confirm-password-group" style="display: none;">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password">
+                        </div>
+                        
+                        <button type="submit" id="auth-submit-btn" class="auth-btn">Sign In</button>
+                    </form>
+                    
+                    <div class="auth-switch">
+                        <p id="auth-switch-text">Don't have an account?</p>
+                        <button type="button" id="auth-switch-btn" class="switch-btn">Sign Up</button>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <p>Demo: Use any email and password to test</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Home Page -->
+        <section id="home-page" class="page">
+            <div class="container">
+                <h2>Available Courses</h2>
+                <div class="courses-grid" id="courses-grid">
+                    <!-- Courses will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Detail Page -->
+        <section id="course-detail-page" class="page">
+            <div class="container">
+                <button id="back-to-home" class="back-btn">← Back to Courses</button>
+                <div class="course-header">
+                    <h2 id="course-title"></h2>
+                    <p id="course-description"></p>
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <span id="progress-text">0% Complete</span>
+                    </div>
+                </div>
+                
+                <div class="lessons-section">
+                    <h3>Lessons</h3>
+                    <div class="lessons-list" id="lessons-list">
+                        <!-- Lessons will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Page -->
+        <section id="progress-page" class="page">
+            <div class="container">
+                <h2>My Learning Progress</h2>
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <h3 id="completed-courses">0</h3>
+                        <p>Courses Completed</p>
+                    </div>
+                </div>
+                <div class="progress-courses" id="progress-courses">
+                    <!-- Progress courses will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard -->
+        <section id="admin-page" class="page">
+            <div class="container">
+                <div class="admin-header">
+                    <h2>Admin Dashboard</h2>
+                    <div class="admin-tabs">
+                        <button class="tab-btn active" data-tab="overview">Overview</button>
+                        <button class="tab-btn" data-tab="courses">Courses</button>
+                        <button class="tab-btn" data-tab="users">Users</button>
+                        <button class="tab-btn" data-tab="analytics">Analytics</button>
+                    </div>
+                </div>
+
+                <!-- Overview Tab -->
+                <div id="admin-overview" class="admin-tab-content active">
+                    <div class="admin-stats">
+                        <div class="stat-card">
+                            <h3 id="admin-total-users">0</h3>
+                            <p>Total Users</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="admin-total-courses">0</h3>
+                            <p>Total Courses</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="admin-active-users">0</h3>
+                            <p>Active Users</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="admin-completed-lessons">0</h3>
+                            <p>Lessons Completed</p>
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <h3>Recent Activity</h3>
+                        <div id="activity-list" class="activity-list">
+                            <!-- Activity items will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courses Tab -->
+                <div id="admin-courses" class="admin-tab-content">
+                    <div class="admin-section-header">
+                        <h3>Course Management</h3>
+                        <button class="btn-primary" id="add-course-btn">Add New Course</button>
+                    </div>
+                    <div class="courses-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Lessons</th>
+                                    <th>Duration</th>
+                                    <th>Students</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="courses-table-body">
+                                <!-- Courses will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Users Tab -->
+                <div id="admin-users" class="admin-tab-content">
+                    <div class="admin-section-header">
+                        <h3>User Management</h3>
+                        <div class="search-box">
+                            <input type="text" id="user-search" placeholder="Search users...">
+                        </div>
+                    </div>
+                    <div class="users-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Join Date</th>
+                                    <th>Progress</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body">
+                                <!-- Users will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div id="admin-analytics" class="admin-tab-content">
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>Course Completion Rates</h3>
+                            <div id="completion-chart" class="chart-container">
+                                <!-- Chart will be rendered here -->
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>User Engagement</h3>
+                            <div id="engagement-chart" class="chart-container">
+                                <!-- Chart will be rendered here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add/Edit Course Modal -->
+        <div id="course-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Add New Course</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <form id="course-form">
+                    <div class="form-group">
+                        <label for="course-title-input">Course Title</label>
+                        <input type="text" id="course-title-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-description-input">Description</label>
+                        <textarea id="course-description-input" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-duration-input">Duration</label>
+                        <input type="text" id="course-duration-input" placeholder="e.g., 8 weeks" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Lessons</label>
+                        <div id="lessons-container">
+                            <!-- Lessons will be added dynamically -->
+                        </div>
+                        <button type="button" id="add-lesson-btn" class="btn-secondary">Add Lesson</button>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" id="cancel-course">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Course</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
